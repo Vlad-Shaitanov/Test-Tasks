@@ -1,0 +1,183 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+html {
+	font-size: 15px;
+}
+body {
+	font-size: 1rem;
+	background-color: aquamarine;
+}
+.wrapper {
+	margin: 10rem 10rem 5rem;
+	border: 0.1rem solid #000;
+	background-color: #fff;
+	box-shadow: 0.5rem 0.5rem 0.7rem rgb(117, 117, 117);
+}
+
+/*Spinner*/
+.spinner-message {
+	display: block;
+	margin-left: 43%;
+	font-size: 2rem;
+}
+#spinner-group {
+	position: relative;
+	width: 60px;
+	height: 75px;
+	margin: auto;
+}
+
+.spinner-elem {
+	position: absolute;
+	background-color: rgb(255, 255, 255);
+	width: 10px; /*10*/
+	height: 23px; /*23*/
+	border-radius: 8px 8px 0 0;
+	transform: scale(0.4);
+	animation-name: animate;
+	animation-duration: 1.2s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+
+#rotateSE_01 {
+	left: 0;
+	top: 27px;
+	animation-delay: 0.45s;
+	transform: rotate(-90deg);
+}
+
+#rotateSE_02 {
+	left: 8px;
+	top: 10px;
+	animation-delay: 0.6s;
+	transform: rotate(-45deg);
+}
+
+#rotateSE_03 {
+	left: 25px;
+	top: 3px;
+	animation-delay: 0.75s;
+	transform: rotate(0deg);
+}
+
+#rotateSE_04 {
+	right: 8px;
+	top: 10px;
+	animation-delay: 0.9s;
+	transform: rotate(45deg);
+}
+
+#rotateSE_05 {
+	right: 0;
+	top: 27px;
+	animation-delay: 1.05s;
+	transform: rotate(90deg);
+}
+
+#rotateSE_06 {
+	right: 8px;
+	bottom: 7px;
+	animation-delay: 1.2s;
+	transform: rotate(135deg);
+}
+
+#rotateSE_07 {
+	bottom: 0;
+	left: 25px;
+	animation-delay: 1.35s;
+	transform: rotate(180deg);
+}
+
+#rotateSE_08 {
+	left: 8px;
+	bottom: 7px;
+	animation-delay: 1.5s;
+	transform: rotate(-135deg);
+}
+
+@keyframes animate {
+	0% {
+		background-color: rgb(0, 0, 0);
+	}
+
+	100% {
+		background-color: rgb(255, 255, 255);
+	}
+}
+
+/*Search-panel*/
+.search-panel {
+	margin: 3rem 0 3rem 5rem;
+}
+.search-input {
+	width: 65%;
+	padding: 0.5rem;
+	border: 0.1rem solid rgb(8, 101, 223);
+	&:focus,
+	&:active {
+		outline-color: rgb(8, 101, 223);
+	}
+}
+.search-btn {
+	padding: 0.5rem;
+	font-size: 1rem;
+	border: none;
+	background-color: rgb(100, 178, 241);
+	color: rgb(248, 242, 242);
+	cursor: pointer;
+	&:hover {
+		background-color: rgb(6, 84, 148);
+		color: #fff;
+	}
+	&:focus,
+	&:active {
+		outline: none;
+	}
+}
+
+/*Table*/
+.table-all {
+	width: 96%;
+	margin: 0 auto 1rem;
+	border: 0.1rem solid #000;
+	border-collapse: collapse;
+}
+table {
+	th,
+	td {
+		padding: 0.3rem;
+		border: 0.1rem solid #000;
+		text-align: center;
+	}
+}
+
+/*Tooltip*/
+.tooltip-src {
+	cursor: pointer;
+}
+.tooltip-src {
+	span {
+		opacity: 0;
+		transition: 1s;
+		visibility: hidden;
+		position: absolute;
+		transform: translate(-50%, 20px);
+		pointer-events: none;
+		background-color: rgba(0, 0, 0, 0.8);
+		color: white;
+		padding: 5px;
+	}
+}
+.tooltip-src:hover {
+	span {
+		opacity: 1;
+		visibility: visible;
+	}
+}
