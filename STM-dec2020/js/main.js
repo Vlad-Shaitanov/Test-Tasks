@@ -70,17 +70,12 @@ function createNewUser() {
 			// 	});
 			showUsers();
 		})
-		.catch(() => {
+		.catch((error) => {
 			showSpinner();
+			throw new Error(`Произошла ошибка: ${error.name}`);
 		});
 	console.log(users);
 }
-
-// function createTooltip() {
-// 	users.forEach((item) => {
-// 		tableUsers.querySelector("td").classList.add("tooltip-src");
-// 	});
-// }
 
 function clearInput() {
 	if (searchInput.value) {
@@ -114,15 +109,18 @@ function showUsers() {
 		});
 }
 
-function hideUsers() {
+let hideUsers = () => {
 	users.forEach((item) => {
-		console.log(item);
+		// console.log(item);
 		tableUsers.removeChild(tableUsers.querySelector("tr"));
 	});
-}
 
-function filterUsers(target) {
+	// hideUsers = function () { };
+};
+
+function filterUsers() {
 	let userName = searchInput.value.trim();
+	let regPhrase = new RegExp(userName, "gi");
 	hideUsers();
 	// const resultSearch = users.filter((item) => {
 	// 	const name = item.first;
@@ -149,13 +147,23 @@ function filterUsers(target) {
 	// 			`);
 
 	// 	});
+
+	// for (let i = 0; i < userName.length; i++) {
 	users.forEach(
 		({ name: { first, last },
 			picture: { thumbnail, large },
 			location: { state, city }, email, phone,
 			registered: { date } }) => {
-			let regDate = new Date(Date.parse(date)).toLocaleDateString();
-			if (target === first) {
+			const regDate = new Date(Date.parse(date)).toLocaleDateString();
+			// const match = regPhrase.test(first);
+			let matching = first.match(regPhrase);
+			console.log(matching);
+
+			// tableUsers.removeChild(tableUsers.querySelector("tr"));
+			if (matching !== null) {
+				if (matching === first) {
+					filterUsers();
+				}
 				console.log("if is done");
 				return tableUsers.insertAdjacentHTML("beforeend", `
 					<tr>
@@ -168,8 +176,9 @@ function filterUsers(target) {
 					</tr>
 				`);
 			}
-
 		});
+	// }
+
 	console.log(`Имя пользователя: ${userName}`);
 }
 
@@ -179,8 +188,9 @@ searchBtn.addEventListener("click", clearInput);
 searchInput.addEventListener("input", (event) => {
 	let target = event.target.value;
 	console.log(target);
+	// let word = new RegExp(target, "gi");
 	if (target) {
-		filterUsers(target);
+		filterUsers();
 	}
 
 	// if (event.charCode === 13) {
@@ -209,3 +219,41 @@ function init() {
 	}
 }
 init();
+
+
+// function filterUsers() {
+// 	let userName = searchInput.value.trim();
+// 	let regPhrase = new RegExp(userName, "gi");
+// 	hideUsers();
+
+
+// 	users.forEach(
+// 		({ name: { first, last },
+// 			picture: { thumbnail, large },
+// 			location: { state, city }, email, phone,
+// 			registered: { date } }) => {
+// 			const regDate = new Date(Date.parse(date)).toLocaleDateString();
+// 			// const match = regPhrase.test(first);
+// 			const matching = first.match(regPhrase) || [];
+// 			console.log(matching);
+// 			// if () {
+// 			// 	console.log("if is done");
+// 			// 	return tableUsers.insertAdjacentHTML("beforeend", `
+// 			// 		<tr>
+// 			// 			<td>${first} ${last}</td>
+// 			// 			<td class="tooltip-src"><span><img src="${large}"></span><img src="${thumbnail}"></td>
+// 			// 			<td>${state} ${city}</td>
+// 			// 			<td>${email}</td>
+// 			// 			<td>${phone}</td>
+// 			// 			<td>${regDate}</td>
+// 			// 		</tr>
+// 			// 	`);
+// 			// }
+// 			// else if (!match) {
+// 			// 	showUsers();
+// 			// }
+// 		});
+
+
+// 	console.log(`Имя пользователя: ${userName}`);
+// }

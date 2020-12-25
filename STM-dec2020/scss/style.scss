@@ -11,7 +11,7 @@ html {
 }
 body {
 	font-size: 1rem;
-	background-color: aquamarine;
+	background-color: rgb(155, 215, 255);
 }
 .wrapper {
 	margin: 10rem 10rem 5rem;
@@ -179,5 +179,24 @@ table {
 	span {
 		opacity: 1;
 		visibility: visible;
+	}
+}
+
+/*Media*/
+@media (max-width: 920px) {
+	.wrapper {
+		margin: 2rem 2rem 5rem;
+	}
+}
+
+@media (max-width: 690px) {
+	.wrapper {
+		margin: 0rem 0rem 5rem;
+	}
+}
+
+@media (orientation: landscape) {
+	.wrapper {
+		margin: 2rem 2rem 5rem;
 	}
 }
