@@ -13,11 +13,19 @@ html {
 
 body {
   font-size: 1rem;
-  background-color: #9bd7ff;
+  background-color: #35536c;
+}
+
+.page {
+  width: 100%;
+  height: 100vh;
+  min-height: 1280px;
+  background: #9bd7ff url("../img/2016.jpg") center no-repeat;
+  background-size: cover;
 }
 
 .wrapper {
-  margin: 10rem 10rem 5rem;
+  margin: 0rem 4rem 5rem;
   border: 0.1rem solid #000;
   background-color: #fff;
   box-shadow: 0.5rem 0.5rem 0.7rem #757575;
@@ -165,6 +173,17 @@ table td {
   text-align: center;
 }
 
+.show {
+  display: flex;
+  margin: 1rem auto;
+  justify-content: center;
+  color: crimson;
+}
+
+.hide {
+  display: none;
+}
+
 /*Tooltip*/
 .tooltip-src {
   cursor: pointer;
@@ -188,9 +207,21 @@ table td {
 }
 
 /*Media*/
+@media (max-width: 4100px) {
+  .wrapper {
+    margin: 0 10rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .wrapper {
+    margin: 2rem 5rem 5rem;
+  }
+}
+
 @media (max-width: 920px) {
   .wrapper {
-    margin: 2rem 2rem 5rem;
+    margin: 2rem 3rem 5rem;
   }
 }
 

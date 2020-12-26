@@ -9,27 +9,32 @@
 </head>
 
 <body>
-	<div class="wrapper">
-		<div class="search-panel">
-			<input type="text" value="" class="search-input" placeholder="Введите имя пользователя">
-			<button type="button" class="search-btn">Сбросить</button>
-		</div>
-		<div class="spinner-wrap"></div>
-		<table class="table-all">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>picture</th>
-					<th>location</th>
-					<th>email</th>
-					<th>phone</th>
-					<th>registered date</th>
-				</tr>
-			</thead>
-			<tbody class="table-users">
+	<div class="page">
+		<div class="wrapper">
+			<div class="search-panel">
+				<input type="text" value="" class="search-input" placeholder="Введите имя пользователя">
+				<button type="button" class="search-btn">Очистить</button>
+			</div>
 
-			</tbody>
-		</table>
+			<table class="table-all">
+				<thead>
+					<tr>
+						<th>name</th>
+						<th>picture</th>
+						<th>location</th>
+						<th>email</th>
+						<th>phone</th>
+						<th>registered date</th>
+					</tr>
+				</thead>
+				<tbody class="table-users">
+
+				</tbody>
+			</table>
+			<div class="spinner-wrap"></div>
+			<div class="bottom-message hide">СОВПАДЕНИЯ НЕ НАЙДЕНЫ</div>
+			<div class="error-message hide"></div>
+		</div>
 	</div>
 
 	<script src="./js/main.js"></script>
