@@ -5,6 +5,8 @@ const spinner = document.querySelector(".spinner-wrap");
 const searchInput = document.querySelector(".search-input");
 const searchBtn = document.querySelector(".search-btn");
 const tableUsers = document.querySelector(".table-users");
+const bottomMessage = document.querySelector(".bottom-message");
+const errorMessage = document.querySelector(".error-message");
 
 
 //Spinner
@@ -39,59 +41,40 @@ async function getUsers() {//Получаем 15 рандомных юзеров
 			return data;
 		}
 	} catch (error) {
-		showSpinner();
+
 		throw new Error(
 			`Произошла ошибка получения данных по адресу ${urlDataBase}`);
 	}
 }
 
-
-
 function createNewUser() {
 	getUsers()
 		.then(data => {
 			users.push(...data.results);
-			// users.forEach(
-			// 	({ name: { first, last },
-			// 		picture: { thumbnail },
-			// 		location: { state, city }, email, phone,
-			// 		registered: { date } }) => {
-			// 		let regDate = new Date(Date.parse(date)).toLocaleDateString();
-			// 		return tableUsers.insertAdjacentHTML("beforeend", `
-			// 		<tr>
-			// 			<td>${first} ${last}</td>
-			// 			<td class="tooltip-src"><img src="${thumbnail}"></td>
-			// 			<td>${state} ${city}</td>
-			// 			<td>${email}</td>
-			// 			<td>${phone}</td>
-			// 			<td>${regDate}</td>
-			// 		</tr>
-			// 	`);
-			// 	});
+
 			showUsers();
 		})
-		.catch(() => {
-			showSpinner();
-		});
-	console.log(users);
-}
+		.catch((error) => {
 
-// function createTooltip() {
-// 	users.forEach((item) => {
-// 		tableUsers.querySelector("td").classList.add("tooltip-src");
-// 	});
-// }
+			throw new Error(`Произошла ошибка: ${error.name}`);
+		});
+}
 
 function clearInput() {
 	if (searchInput.value) {
 		searchInput.value = "";
-		tableUsers.removeChild(tableUsers.querySelector("tr"));//Срабатывает только при одном совпадении
-		//На всякий случай для нескольких совпадений
-		// users.forEach(() => {
-		// 	tableUsers.removeChild(tableUsers.querySelector("tr"));
-		// });
+
+		users.forEach(() => {
+			tableUsers.removeChild(tableUsers.querySelector("tr"));
+		});
 		showUsers();
+		deleteMessage();
 	}
+}
+
+function deleteMessage() {
+	bottomMessage.classList.remove("show");
+	bottomMessage.classList.add("hide");
 }
 
 function showUsers() {
@@ -114,87 +97,49 @@ function showUsers() {
 		});
 }
 
-function hideUsers() {
-	users.forEach((item) => {
-		console.log(item);
-		tableUsers.removeChild(tableUsers.querySelector("tr"));
-	});
-}
 
-function filterUsers(target) {
-	let userName = searchInput.value.trim();
-	hideUsers();
-	// const resultSearch = users.filter((item) => {
-	// 	const name = item.first;
-	// 	console.log(name);
-	// });
+function filterUsers() {
+	const userName = searchInput.value.trim();
+	const regPhrase = new RegExp(userName, "gi");
 
-	// resultSearch.forEach(
-	// 	({ name: { first, last },
-	// 		picture: { thumbnail },
-	// 		location: { state, city }, email, phone,
-	// 		registered: { date } }) => {
-	// 		let regDate = new Date(Date.parse(date)).toLocaleDateString();
 
-	// 		console.log("if is done");
-	// 		return tableUsers.insertAdjacentHTML("beforeend", `
-	// 				<tr>
-	// 					<td>${first} ${last}</td>
-	// 					<td><img src="${thumbnail}"></td>
-	// 					<td>${state} ${city}</td>
-	// 					<td>${email}</td>
-	// 					<td>${phone}</td>
-	// 					<td>${regDate}</td>
-	// 				</tr>
-	// 			`);
-
-	// 	});
-	users.forEach(
-		({ name: { first, last },
-			picture: { thumbnail, large },
-			location: { state, city }, email, phone,
-			registered: { date } }) => {
-			let regDate = new Date(Date.parse(date)).toLocaleDateString();
-			if (target === first) {
-				console.log("if is done");
-				return tableUsers.insertAdjacentHTML("beforeend", `
-					<tr>
-						<td>${first} ${last}</td>
-						<td class="tooltip-src"><span><img src="${large}"></span><img src="${thumbnail}"></td>
-						<td>${state} ${city}</td>
-						<td>${email}</td>
-						<td>${phone}</td>
-						<td>${regDate}</td>
-					</tr>
-				`);
+	let flag = false;
+	let count = 0;
+	for (let i = 0; i < tableUsers.rows.length; i++) {
+		flag = false;
+		for (let j = tableUsers.rows[i].cells.length - 1; j >= 0; j--) {
+			flag = (tableUsers.rows[i].cells[j].innerHTML).match(regPhrase);
+			if (flag) {
+				break;
 			}
+		}//inner for
+		if (flag) {
+			tableUsers.rows[i].style.display = "";
+			count++;
 
-		});
-	console.log(`Имя пользователя: ${userName}`);
+		} else {
+			tableUsers.rows[i].style.display = "none";
+		}
+
+	}//outer for
+
+	if (count == 0) {
+		bottomMessage.classList.remove("hide");
+		bottomMessage.classList.add("show");
+	} else {
+		deleteMessage();
+	}
 }
 
 
-// window.addEventListener("DOMContentLoaded", createTooltip);
 searchBtn.addEventListener("click", clearInput);
-searchInput.addEventListener("input", (event) => {
-	let target = event.target.value;
+searchInput.addEventListener("keyup", (event) => {
+	const target = event.target.value;
 	console.log(target);
+
 	if (target) {
-		filterUsers(target);
+		filterUsers();
 	}
-
-	// if (event.charCode === 13) {
-	// 	const value = event.target.value.trim();
-	// 	if (!value) {
-	// 		event.target.style.backgroundColor = "#ff0000";
-	// 		event.target.value = "";
-	// 		setTimeout(function () {
-	// 			event.target.style.backgroundColor = "";
-	// 		}, 1500);
-	// 		return;
-	// 	}
-	// }
-
 });
 
 
@@ -203,9 +148,5 @@ function init() {
 	setTimeout(createNewUser, 3000);
 	setTimeout(hideSpinner, 3000);
 
-	if (searchInput.value) {
-		tableUsers.remove();
-		console.log(searchInput.value);
-	}
 }
 init();
