@@ -9,7 +9,7 @@ const bottomMessage = document.querySelector(".bottom-message");
 const errorMessage = document.querySelector(".error-message");
 
 
-//Spinner
+//Создаем спиннер загрузки
 function showSpinner() {
 	spinner.insertAdjacentHTML("afterbegin", `
 	<div id="spinner-group">
@@ -26,14 +26,14 @@ function showSpinner() {
 	`);
 }
 
-
+//Функция скрывает спиннер со страницы
 const hideSpinner = () => spinner.remove();
 
-
+//Переменная-хранилище информации о пользователях
 let users = [];
-let filteredUsers = [];
 
-async function getUsers() {//Получаем 15 рандомных юзеров с серва
+//Функция, запрашивающая с сервера 15 случайных пользователей
+async function getUsers() {
 	try {
 		let response = await fetch(urlDataBase);
 		if (response.ok) {
@@ -47,6 +47,7 @@ async function getUsers() {//Получаем 15 рандомных юзеров
 	}
 }
 
+//Создаем таблицу пользователей на основе запроса с сервера
 function createNewUser() {
 	getUsers()
 		.then(data => {
@@ -60,6 +61,7 @@ function createNewUser() {
 		});
 }
 
+//Удаление содержимого строки поиска
 function clearInput() {
 	if (searchInput.value) {
 		searchInput.value = "";
@@ -72,11 +74,13 @@ function clearInput() {
 	}
 }
 
+//Удаление сообщения о несоответствии контента таблицы пользовательскому вводу
 function deleteMessage() {
 	bottomMessage.classList.remove("show");
 	bottomMessage.classList.add("hide");
 }
 
+//На основе данных о пользователях, полученных с сервера, отрисовываем таблицу
 function showUsers() {
 	users.forEach(
 		({ name: { first, last },
@@ -97,11 +101,10 @@ function showUsers() {
 		});
 }
 
-
+//Производим фильтрацию таблицы на основе пользовательского ввода
 function filterUsers() {
 	const userName = searchInput.value.trim();
 	const regPhrase = new RegExp(userName, "gi");
-
 
 	let flag = false;
 	let count = 0;
@@ -131,18 +134,45 @@ function filterUsers() {
 	}
 }
 
+//Декоратор для вызова функции-фильтра
+function debounce(func, wait, immediate) {
+	let timeout;
+
+	return function debouncedFilter() {
+		//Сохраняем контекст и параметры, переданные в функцию
+		const context = this;
+		const args = arguments;
+
+		const later = function () {
+			// Нулевой timeout, чтобы указать, что debounce закончилась.
+			timeout = null;
+
+			// Вызываем функцию, если immediate !== true,
+			// то есть, мы вызываем функцию в конце, после wait времени.
+			if (!immediate) {
+				func.apply(context, args);
+			}
+		};
+
+		//Определяем, нужно ли вызвать функцию в самом начале
+		const callNow = immediate && !timeout;
+
+		clearTimeout(timeout);
+
+		//Перезапуск таймера
+		timeout = setTimeout(later, wait);
+
+		// Вызываем функцию в начале, если immediate === true
+		if (callNow) {
+			func.apply(context, args);
+		}
+	};
+}
 
 searchBtn.addEventListener("click", clearInput);
-searchInput.addEventListener("keyup", (event) => {
-	const target = event.target.value;
-	console.log(target);
+searchInput.addEventListener("keyup", debounce(filterUsers, 450, true));
 
-	if (target) {
-		filterUsers();
-	}
-});
-
-
+//Функция, инициализирующая работу программы
 function init() {
 	showSpinner();
 	setTimeout(createNewUser, 3000);

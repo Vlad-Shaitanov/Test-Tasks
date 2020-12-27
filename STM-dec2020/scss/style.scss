@@ -203,10 +203,14 @@ table {
 }
 
 /*Media*/
-
-@media (max-width: 4100px) {
+@media (min-width: 2100px) {
 	.wrapper {
-		margin: 0 10rem;
+		margin: 0 20%;
+	}
+}
+@media (min-width: 1281px) {
+	.wrapper {
+		margin: 0 10%;
 	}
 }
 @media (max-width: 1280px) {
@@ -223,11 +227,5 @@ table {
 @media (max-width: 690px) {
 	.wrapper {
 		margin: 0rem 0rem 5rem;
-	}
-}
-
-@media (orientation: landscape) {
-	.wrapper {
-		margin: 2rem 2rem 5rem;
 	}
 }
