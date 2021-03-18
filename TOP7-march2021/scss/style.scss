@@ -47,7 +47,7 @@ img {
 	display: block;
 }
 
-.page {
+.main {
 	max-width: 1600px;
 	min-height: 100%;
 	margin: 0 auto;
@@ -129,9 +129,11 @@ img {
 	}
 }
 
+/*===== HOME =====*/
+
 .home {
+	height: 850px;
 	background-size: cover;
-	background-position: center;
 }
 
 .home__content {
@@ -158,11 +160,13 @@ img {
 
 .home-btn {
 	margin-top: 49px;
+
 	width: 194px;
 	height: 45px;
 	background-color: #b88b58;
 	outline: none;
 	border-radius: 20px;
+	cursor: pointer;
 
 	p {
 		font-family: Montserrat;
@@ -193,20 +197,27 @@ img {
 	}
 }
 
+/*===== SLIDER =====*/
+
 .slider {
-	margin-top: 186px;
+	position: relative;
 	&-dots {
+		position: absolute;
+		left: 5%;
+		bottom: 5%;
 		width: 90%;
+		// margin: 186px auto 0;
 		margin: 0 auto;
-		margin-top: 20px;
+		// margin-top: 20px;
 		display: flex;
 		justify-content: center;
 		.dot {
 			cursor: pointer;
-			height: 14px;
-			width: 14px;
+			height: 12px;
+			width: 12px;
 			margin: 0 10px;
-			background-color: #000;
+			background-color: transparent;
+			border: 1px solid #b88b58;
 			border-radius: 50%;
 			display: inline-block;
 			transition: background-color 0.6s ease;
@@ -219,16 +230,205 @@ img {
 	}
 }
 
-.main {
-	// grid-area: main;
+.slider-item {
+	height: 850px;
+	background-size: cover;
+	background-position: center;
+}
+
+/*===== ABOUT =====*/
+
+.about {
+	background-color: #ffffff;
+
+	h2 {
+		font-family: Montserrat;
+		font-size: 30px;
+		line-height: 30px;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: #000000;
+	}
+
+	p {
+		font-size: 14px;
+		color: #aeaeae;
+	}
+}
+
+.price__title,
+.about__title {
+	margin: 63px auto 0;
+	text-align: center;
+}
+
+.about__content {
+	margin: 55px auto 79px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.about__content-text {
+	p {
+		max-width: 634px;
+		font-family: Montserrat;
+		font-size: 14px;
+		line-height: 25px;
+		font-weight: 300;
+		color: #242424;
+	}
+}
+
+.about-btn {
+	margin-top: 34px;
+
+	width: 194px;
+	height: 45px;
+	background-color: #b88b58;
+	outline: none;
+	border-radius: 20px;
+	cursor: pointer;
+
+	p {
+		font-family: Montserrat;
+		font-size: 12px;
+		line-height: 18px;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: #ffffff;
+	}
+
+	&:active {
+		background-color: #000000;
+	}
+}
+
+.about__content-video {
+	img {
+		width: 445px;
+		height: 275px;
+		box-shadow: 0px 13px 24px 0px rgba(0, 0, 1, 0.41);
+	}
+}
+
+/*===== PRICE =====*/
+.price {
+	height: 560px;
+	background-color: #ededed;
+	border: 1px solid #cfcfcf;
+
+	h2 {
+		font-family: Montserrat;
+		font-size: 30px;
+		line-height: 30px;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: #000000;
+	}
+
+	p {
+		font-size: 14px;
+		color: #aeaeae;
+	}
+}
+
+.price__content {
+	margin-top: 45px;
+	display: flex;
+	justify-content: space-between;
+
+	&-item {
+		width: 255px;
+		height: 343px;
+		background-color: #ffffff;
+
+		&-title {
+			margin-top: 31px;
+			margin-bottom: 15px;
+			text-align: center;
+			p {
+				font-family: Montserrat;
+				font-size: 14px;
+				line-height: 21px;
+				font-weight: 400;
+				text-transform: uppercase;
+				color: #242424;
+			}
+		}
+
+		&-cost {
+			text-align: center;
+			p {
+				font-family: Montserrat;
+				font-size: 30px;
+				line-height: 21px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.16em;
+				color: #242424;
+			}
+
+			span {
+				letter-spacing: normal;
+			}
+		}
+
+		&-month {
+			text-align: center;
+			// margin-bottom: 23px;
+			p {
+				font-family: Montserrat;
+				font-size: 10px;
+				line-height: 25px;
+				font-weight: 400;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				color: #aeaeae;
+			}
+		}
+
+		&-issue {
+			max-width: 125px;
+			margin: 23px auto 28px;
+
+			p {
+				text-align: center;
+				font-family: Montserrat;
+				font-size: 10px;
+				line-height: 13px;
+				font-weight: 400;
+				color: #7e7e7e;
+			}
+		}
+	}
+}
+
+.price-btn {
+	margin: 0 63px;
+
+	width: 129px;
+	height: 45px;
+	border-radius: 20px;
+	background-color: #373737;
+
+	p {
+		font-family: Montserrat;
+		font-size: 12px;
+		line-height: 18px;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: #ffffff;
+	}
+
+	&:active {
+		background-color: #b88b58;
+	}
 }
 
 .footer {
+	max-width: 1600px;
 	min-height: 262px;
+	margin: 0 auto;
 	background-color: #000;
 	color: #fff;
-}
-.home {
-	height: 850px;
-	background-size: cover;
 }

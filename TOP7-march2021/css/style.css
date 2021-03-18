@@ -50,7 +50,7 @@ img {
   display: block;
 }
 
-.page {
+.main {
   max-width: 1600px;
   min-height: 100%;
   margin: 0 auto;
@@ -153,10 +153,11 @@ img {
   width: 100%;
 }
 
+/*===== HOME =====*/
 .home {
+  height: 850px;
   -webkit-background-size: cover;
           background-size: cover;
-  background-position: center;
 }
 
 .home__content {
@@ -190,6 +191,7 @@ img {
   outline: none;
   -webkit-border-radius: 20px;
           border-radius: 20px;
+  cursor: pointer;
 }
 
 .home-btn p {
@@ -218,14 +220,17 @@ img {
   color: #b88b58;
 }
 
+/*===== SLIDER =====*/
 .slider {
-  margin-top: 186px;
+  position: relative;
 }
 
 .slider-dots {
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
   width: 90%;
   margin: 0 auto;
-  margin-top: 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -238,10 +243,11 @@ img {
 
 .slider-dots .dot {
   cursor: pointer;
-  height: 14px;
-  width: 14px;
+  height: 12px;
+  width: 12px;
   margin: 0 10px;
-  background-color: #000;
+  background-color: transparent;
+  border: 1px solid #b88b58;
   -webkit-border-radius: 50%;
           border-radius: 50%;
   display: inline-block;
@@ -254,14 +260,216 @@ img {
   background-color: #b88b58;
 }
 
-.footer {
-  min-height: 262px;
-  background-color: #000;
-  color: #fff;
-}
-
-.home {
+.slider-item {
   height: 850px;
   -webkit-background-size: cover;
           background-size: cover;
+  background-position: center;
+}
+
+/*===== ABOUT =====*/
+.about {
+  background-color: #ffffff;
+}
+
+.about h2 {
+  font-family: Montserrat;
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.about p {
+  font-size: 14px;
+  color: #aeaeae;
+}
+
+.price__title,
+.about__title {
+  margin: 63px auto 0;
+  text-align: center;
+}
+
+.about__content {
+  margin: 55px auto 79px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.about__content-text p {
+  max-width: 634px;
+  font-family: Montserrat;
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 300;
+  color: #242424;
+}
+
+.about-btn {
+  margin-top: 34px;
+  width: 194px;
+  height: 45px;
+  background-color: #b88b58;
+  outline: none;
+  -webkit-border-radius: 20px;
+          border-radius: 20px;
+  cursor: pointer;
+}
+
+.about-btn p {
+  font-family: Montserrat;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.about-btn:active {
+  background-color: #000000;
+}
+
+.about__content-video img {
+  width: 445px;
+  height: 275px;
+  -webkit-box-shadow: 0px 13px 24px 0px rgba(0, 0, 1, 0.41);
+          box-shadow: 0px 13px 24px 0px rgba(0, 0, 1, 0.41);
+}
+
+/*===== PRICE =====*/
+.price {
+  height: 560px;
+  background-color: #ededed;
+  border: 1px solid #cfcfcf;
+}
+
+.price h2 {
+  font-family: Montserrat;
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.price p {
+  font-size: 14px;
+  color: #aeaeae;
+}
+
+.price__content {
+  margin-top: 45px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.price__content-item {
+  width: 255px;
+  height: 343px;
+  background-color: #ffffff;
+}
+
+.price__content-item-title {
+  margin-top: 31px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.price__content-item-title p {
+  font-family: Montserrat;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #242424;
+}
+
+.price__content-item-cost {
+  text-align: center;
+}
+
+.price__content-item-cost p {
+  font-family: Montserrat;
+  font-size: 30px;
+  line-height: 21px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #242424;
+}
+
+.price__content-item-cost span {
+  letter-spacing: normal;
+}
+
+.price__content-item-month {
+  text-align: center;
+}
+
+.price__content-item-month p {
+  font-family: Montserrat;
+  font-size: 10px;
+  line-height: 25px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #aeaeae;
+}
+
+.price__content-item-issue {
+  max-width: 125px;
+  margin: 23px auto 28px;
+}
+
+.price__content-item-issue p {
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 10px;
+  line-height: 13px;
+  font-weight: 400;
+  color: #7e7e7e;
+}
+
+.price-btn {
+  margin: 0 63px;
+  width: 129px;
+  height: 45px;
+  -webkit-border-radius: 20px;
+          border-radius: 20px;
+  background-color: #373737;
+}
+
+.price-btn p {
+  font-family: Montserrat;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.price-btn:active {
+  background-color: #b88b58;
+}
+
+.footer {
+  max-width: 1600px;
+  min-height: 262px;
+  margin: 0 auto;
+  background-color: #000;
+  color: #fff;
 }
