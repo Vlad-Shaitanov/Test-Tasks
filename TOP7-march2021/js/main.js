@@ -60,12 +60,13 @@ const callbackModal3 = document.querySelector(".modal-3");//Модальное �
 
 callbackBtn.addEventListener("click", () => {
 	callbackModal1.style.display = "block";
+	callbackModal2.style.display = "none";
 
 	callbackModal1.classList.remove("modal--visible");
 	callbackModal2.classList.remove("modal--visible");
+	callbackModal3.classList.remove("modal--visible");
 	callbackModal1.classList.add("modal--visible");
 	callbackModal2.classList.add("modal--hidden");
-	callbackModal3.classList.remove("modal--visible");
 	callbackModal3.classList.add("modal--hidden");
 
 	callbackModalOverlay.classList.add("modal__callback-overlay--visible");
@@ -74,10 +75,10 @@ callbackBtn.addEventListener("click", () => {
 
 callbackFormBtn.addEventListener("click", () => {
 	callbackModal2.style.display = "block";
-	callbackModal1.classList.remove('modal--visible');
 	callbackModal1.style.display = "none";
-
+	callbackModal1.classList.remove('modal--visible');
 	callbackModal2.classList.remove("modal--hidden");
+
 	callbackModal2.classList.add("modal--visible");
 
 	document.body.style.overflow = "hidden";
