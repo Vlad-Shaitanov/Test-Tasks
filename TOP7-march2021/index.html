@@ -113,6 +113,13 @@
 					</div>
 				</div>
 				<section class="about">
+					<div class="callback-btn-wrap">
+						<div class="callback-btn">
+							<a href="#">
+								<img src="./img/telephone_2229.png" alt="callback">
+							</a>
+						</div>
+					</div>
 					<div class="about__title">
 						<h2>ABOUT US</h2>
 						<p>who we are</p>
@@ -141,6 +148,21 @@
 						</div>
 						<div class="about__content-video">
 							<img src="img/video_880.png" width="445" alt="video">
+						</div>
+					</div>
+					<div class="modal__callback">
+						<div class="modal__callback-overlay">
+							<div class="modal">
+								<form action="/" class="callback__form">
+									<div class="callback__form-wrap">
+										<input type="text" name="name" placeholder="name">
+										<input type="tel" name="phone" placeholder="+00 0 1234 5678">
+										<button class="callback__form-btn" type="button">
+											<span>CALL ME BACK!</span>
+										</button>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
 				</section>
@@ -267,7 +289,7 @@
 							<input type="text" name="name" placeholder="name">
 							<input type="email" name="email" placeholder="email">
 							<input type="text" name="subject" placeholder="subject">
-							<input type="text" name="message" placeholder="message">
+							<textarea name="message" placeholder="message"></textarea>
 							<button class="contact-btn" type="submit">
 								<span>send message</span>
 							</button>

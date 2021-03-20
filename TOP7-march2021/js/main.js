@@ -45,3 +45,26 @@ function changeSlides() {
 	}, 5000);
 }
 changeSlides();
+
+
+/*===== ABOUT modal =====*/
+const callbackBtn = document.querySelector(".callback-btn");
+const callbackModalOverlay = document.querySelector(".modal__callback-overlay");
+const callbackModal = document.querySelector(".modal");
+
+callbackBtn.addEventListener("click", () => {
+	callbackModal.classList.remove("modal--visible");
+	callbackModal.classList.add("modal--visible");
+	callbackModalOverlay.classList.add("modal__callback-overlay--visible");
+	document.body.style.overflow = "hidden";//Запрет скролла при открытой модалке
+});
+
+callbackModalOverlay.addEventListener("click", event => {
+	//Скрываем модальное окно при клике на оверлей
+
+	if (event.target == callbackModalOverlay) {
+		callbackModalOverlay.classList.remove('modal__callback-overlay--visible');
+		callbackModal.classList.remove('modal--visible');
+		document.body.style.overflow = "";
+	}
+});
