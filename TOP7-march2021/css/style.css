@@ -444,6 +444,7 @@ img {
           border-radius: 5px;
 }
 
+.modal-3,
 .modal-2 {
   width: 540px;
   height: 167px;
@@ -546,10 +547,12 @@ img {
   background-color: #000000;
 }
 
+.contact-done,
 .callback-done {
   text-align: center;
 }
 
+.contact-done h2,
 .callback-done h2 {
   font-family: Montserrat;
   font-size: 20px;
@@ -561,6 +564,7 @@ img {
   padding-bottom: 20px;
 }
 
+.contact-done p,
 .callback-done p {
   font-family: Montserrat;
   font-size: 14px;
@@ -802,6 +806,8 @@ img {
   text-align: center;
   margin: 52px auto;
   margin-left: 30%;
+  outline: 0;
+  border: 0;
 }
 
 .contact-btn span {
@@ -811,6 +817,10 @@ img {
   font-weight: 700;
   text-transform: uppercase;
   color: #ffffff;
+}
+
+.contact-btn:active {
+  background-color: #000;
 }
 
 /*===== FOOTER =====*/

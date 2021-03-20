@@ -47,26 +47,33 @@ function changeSlides() {
 changeSlides();
 
 
-/*===== ABOUT modal =====*/
+/*===== modal =====*/
 const callbackBtn = document.querySelector(".callback-btn");
-const callbackModalOverlay = document.querySelector(".modal__callback-overlay");
-const callbackModal1 = document.querySelector(".modal-1");
-const callbackModal2 = document.querySelector(".modal-2");
+const contactBtn = document.querySelector(".contact-btn");
 const callbackFormBtn = document.querySelector(".callback__form-btn");
+
+const callbackModalOverlay = document.querySelector(".modal__callback-overlay");
+const callbackModal1 = document.querySelector(".modal-1");//Первое модальное окно блока about
+const callbackModal2 = document.querySelector(".modal-2");//Второе модальное окно блока about
+const callbackModal3 = document.querySelector(".modal-3");//Модальное окно блока contact
 
 
 callbackBtn.addEventListener("click", () => {
 	callbackModal1.style.display = "block";
+
 	callbackModal1.classList.remove("modal--visible");
-	callbackModal1.classList.add("modal--visible");
 	callbackModal2.classList.remove("modal--visible");
+	callbackModal1.classList.add("modal--visible");
 	callbackModal2.classList.add("modal--hidden");
+	callbackModal3.classList.remove("modal--visible");
+	callbackModal3.classList.add("modal--hidden");
 
 	callbackModalOverlay.classList.add("modal__callback-overlay--visible");
 	document.body.style.overflow = "hidden";//Запрет скролла при открытой модалке
 });
 
 callbackFormBtn.addEventListener("click", () => {
+	callbackModal2.style.display = "block";
 	callbackModal1.classList.remove('modal--visible');
 	callbackModal1.style.display = "none";
 
@@ -76,6 +83,19 @@ callbackFormBtn.addEventListener("click", () => {
 	document.body.style.overflow = "hidden";
 });
 
+contactBtn.addEventListener("click", () => {
+	callbackModalOverlay.classList.add("modal__callback-overlay--visible");
+	callbackModal1.classList.remove("modal--visible");
+	callbackModal2.classList.remove("modal--visible");
+	callbackModal3.classList.remove("modal--visible");
+	callbackModal3.classList.remove("modal--hidden");
+	callbackModal1.style.display = "none";
+	callbackModal2.style.display = "none";
+	callbackModal3.classList.add("modal--visible");
+	document.body.style.overflow = "hidden";
+
+});
+
 callbackModalOverlay.addEventListener("click", event => {
 	//Скрываем модальное окно при клике на оверлей
 	if (event.target == callbackModalOverlay) {
@@ -83,3 +103,5 @@ callbackModalOverlay.addEventListener("click", event => {
 		document.body.style.overflow = "";
 	}
 });
+
+

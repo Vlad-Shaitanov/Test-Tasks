@@ -394,6 +394,8 @@ img {
 	display: block;
 	border-radius: 5px;
 }
+
+.modal-3,
 .modal-2 {
 	width: 540px;
 	height: 167px;
@@ -485,6 +487,7 @@ img {
 	}
 }
 
+.contact-done,
 .callback-done {
 	text-align: center;
 
@@ -713,6 +716,8 @@ img {
 	text-align: center;
 	margin: 52px auto;
 	margin-left: 30%;
+	outline: 0;
+	border: 0;
 
 	span {
 		font-family: Montserrat;
@@ -721,6 +726,10 @@ img {
 		font-weight: 700;
 		text-transform: uppercase;
 		color: #ffffff;
+	}
+
+	&:active {
+		background-color: #000;
 	}
 }
 
