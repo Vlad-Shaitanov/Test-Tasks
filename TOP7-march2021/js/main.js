@@ -119,3 +119,28 @@ const scrollUp = () => {
 scrollUpBtn.addEventListener("click", () => {
 	scrollUp();
 });
+
+/*===== Burger =====*/
+
+const headerBurger = document.querySelector(".header__burger");
+const headerMenu = document.querySelector(".header__menu");
+const headerLinks = document.querySelector(".header__list");
+
+const toggleClass = () => {
+	headerBurger.classList.toggle("active");
+	headerMenu.classList.toggle("active");
+	document.body.classList.toggle("lock");
+};
+
+headerBurger.addEventListener("click", () => {
+	toggleClass();
+});
+
+headerLinks.addEventListener("click", event => {
+	const target = event.target;
+	console.log(target);
+
+	if (target.classList.contains("header__link")) {
+		toggleClass();
+	}
+});
